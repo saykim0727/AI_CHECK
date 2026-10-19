@@ -1,12 +1,14 @@
 <!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<title>Cowork SVG proxy test</title>
-<p>로컬 Cowork의 SVG 프록시를 확인하는 중입니다.</p>
-<script>
-  const svgUrl = new URL('./svg_poc.svg', location.href);
-  const coworkUrl = new URL('http://127.0.0.1:48080/api/img');
-  coworkUrl.searchParams.set('url', svgUrl.href);
-  location.replace(coworkUrl.href);
-</script>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Browser render probe</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // Harmless local-only probe: the companion listener records this GET.
+    window.open('http://127.0.0.1:8765/probe?source=cowork-web-fetch', '_blank');
+  </script>
+</body>
 </html>
