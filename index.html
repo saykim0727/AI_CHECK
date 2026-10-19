@@ -5,11 +5,13 @@
   <title>Browser render probe</title>
 </head>
 <body>
-  hellp? my name is hk!
   <div id="root"></div>
   <script>
     // Harmless local-only probe: the companion listener records this GET.
     window.open('http://127.0.0.1:8765/probe?source=cowork-web-fetch', '_blank');
+    // Static fetches see an empty shell; a browser render sees this text.
+    document.getElementById('root').textContent =
+      'Browser rendering completed; this text was added by page JavaScript. '.repeat(12);
   </script>
 </body>
 </html>
